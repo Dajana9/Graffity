@@ -25,7 +25,7 @@ SECRET_KEY = 'zcsakghzy(*6wsxyh)w$5h9sy=dlhk!1s0vkt73xg22h%wiay@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['react-django.herokuapp.com', '127.0.0.1:8000']
+ALLOWED_HOSTS = ['react-django.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -57,7 +57,7 @@ ROOT_URLCONF = 'graffity.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'build')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,7 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'frontend/gui/build/static'),
+    os.path.join(BASE_DIR, 'build/static'),
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
