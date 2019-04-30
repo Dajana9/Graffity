@@ -1,8 +1,8 @@
 {
-    "name": "gui",
+    "name": "djreact",
     "version": "0.1.0",
     "private": true,
-    "homepage": "./frontend/gui",
+    "homepage": "./",
     "dependencies": {
         "antd": "^3.16.2",
         "axios": "^0.18.0",
@@ -20,11 +20,11 @@
         "slick-carousel": "^1.8.1"
     },
     "scripts": {
-        "start": "react-scripts start djreact/frontend/gui",
+        "start": "react-scripts start",
         "build": "react-scripts build",
         "test": "react-scripts test",
         "eject": "react-scripts eject",
-        "postinstall": "npm run build /frontend/gui/"
+        "postinstall": "npm run build"
     },
     "engines": {
         "node": "10.13.0",
