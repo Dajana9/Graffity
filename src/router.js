@@ -11,6 +11,7 @@ export class AppRouter extends React.Component {
             <BrowserRouter>
                 <div>
                     {/* <Route exact path="/" component={Home} /> */}
+                    <Route path="/" component={Gallery} />
                     <Route path="/gallery" component={Gallery} />
                     <Route path="/workshop" component={Workshop} />
                     <Route path="/webshop" component={Webshop} />
