@@ -1,3 +1,2 @@
-cd backend
-release: python manage.py migrate
+release: python backend/src/manage.py migrate
 web: gunicorn djreact.wsgi --log-file -
