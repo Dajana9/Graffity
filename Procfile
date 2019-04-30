@@ -1,2 +1,2 @@
 release: python backend/src/manage.py migrate
-web: gunicorn graffity.wsgi --log-file -
+web: gunicorn backend/src/graffity.wsgi --log-file -
