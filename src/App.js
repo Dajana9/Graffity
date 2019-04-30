@@ -6,9 +6,7 @@ class App extends Component {
     render() {
         return (
             <>
-                <h1>Hellloooo</h1>
                 <AppRouter />
-                {/* <Element /> */}
             </>
         );
     }

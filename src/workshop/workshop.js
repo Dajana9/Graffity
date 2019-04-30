@@ -109,14 +109,16 @@ export class Workshop extends React.Component {
                 slidesToShow: 2,
                 slidesToScroll: 1
             };
-            let images = articles[0].workshop_images.map(imageId => {
-                return (
-                    <div>
-                        <img key={imageId} src={imageId.image} alt={imageId} className={imageStyle} />
-                    </div>
-                );
-            });
-
+            let images;
+            if (articles[0].workshop_images) {
+                images = articles[0].workshop_images.map(imageId => {
+                    return (
+                        <div>
+                            <img key={imageId} src={imageId.image} alt={imageId} className={imageStyle} />
+                        </div>
+                    );
+                });
+            }
             for (const article of articles) {
                 items.push(
                     <div>
