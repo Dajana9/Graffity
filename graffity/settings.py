@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 import os
 import dj_database_url
 import dotenv
+import sys
+import urllib.parse as urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -25,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zcsakghzy(*6wsxyh)w$5h9sy=dlhk!1s0vkt73xg22h%wiay@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['graffity123.herokuapp.com', '127.0.0.1']
 
@@ -86,7 +88,16 @@ WSGI_APPLICATION = 'graffity.wsgi.application'
 #     }
 # }
 DATABASES = {}
-DATABASES['default'] = dj_database_url.config()
+DATABASES['default'] = dj_database_url.config(
+    default=os.getenv('DATABASE_URL'))
+
+
+# Update with environment configuration.
+DATABASES['default'].update({
+    'NAME': 'graffity123',
+    'USER': 'dajana',
+    'PASSWORD': 'Sifra123',
+})
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
