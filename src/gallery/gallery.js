@@ -40,7 +40,7 @@ export class Gallery extends React.Component {
     };
 
     componentDidMount = async () => {
-        axios.get('http://127.0.0.1:8000/api/gallery').then(res => {
+        axios.get('/api/gallery').then(res => {
             const data = res.data;
             this.setState({articles: data});
         });
