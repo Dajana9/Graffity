@@ -1,7 +1,6 @@
 import axios from 'axios';
 import React from 'react';
 import {css} from 'emotion';
-import {BaseModal} from '../components/modal';
 import {Header} from '../header';
 
 const listStyle = css`
@@ -35,8 +34,9 @@ const flexGrowStyle = css`
 `;
 
 const imageStyle = css`
-    width: inherit;
+    width: 250px;
     height: inherit;
+    object-fit: scale-down;
     display: flex;
     justify-content: flex-end;
     margin-left: 20px;
@@ -64,11 +64,7 @@ export class Webshop extends React.Component {
             });
         };
 
-        const closeModal = () => {
-            this.setState({showModal: false});
-        };
-
-        const {articles, showModal, article} = this.state;
+        const {articles} = this.state;
         const items = [];
         if (articles) {
             for (const article of articles) {
@@ -103,11 +99,6 @@ export class Webshop extends React.Component {
         return (
             <>
                 <Header pageTitle="Webshop" content={items} />
-                {/* <div className={artworkStyle}>Artwork</div>
-
-        <div className={centerElementsStyle}>{items}</div>
-        {/* {isMobile &&  */}
-                <BaseModal isOpen={showModal} closeModal={closeModal} article={article} />
             </>
         );
     }
