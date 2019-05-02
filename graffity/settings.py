@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zcsakghzy(*6wsxyh)w$5h9sy=dlhk!1s0vkt73xg22h%wiay@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['graffity123.herokuapp.com', '127.0.0.1']
 
@@ -81,23 +81,16 @@ WSGI_APPLICATION = 'graffity.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(
-    default=os.getenv('DATABASE_URL'))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(
+#     default=os.getenv('DATABASE_URL'))
 
-
-# Update with environment configuration.
-DATABASES['default'].update({
-    'NAME': 'graffity123',
-    'USER': 'dajana',
-    'PASSWORD': 'Sifra123',
-})
 
 # Password validation
 # https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
@@ -160,10 +153,10 @@ CORS_ORIGIN_WHITELIST = (
 CSRF_COOKIE_NAME = "csrftoken"
 
 
-# This is new:
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
+# # This is new:
+# dotenv_file = os.path.join(BASE_DIR, ".env")
+# if os.path.isfile(dotenv_file):
+#     dotenv.load_dotenv(dotenv_file)
 
 # # This should already be in your settings.py
 # django_heroku.settings(locals())
