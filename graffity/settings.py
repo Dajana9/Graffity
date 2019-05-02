@@ -156,27 +156,11 @@ CSRF_COOKIE_NAME = "csrftoken"
 
 
 # # This is new:
-# dotenv_file = os.path.join(BASE_DIR, ".env")
-# if os.path.isfile(dotenv_file):
-#     dotenv.load_dotenv(dotenv_file)
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
 
-# # This should already be in your settings.py
+# This should already be in your settings.py
 # django_heroku.settings(locals())
 # # This is new
-# del DATABASES['default']['OPTIONS']['sslmode']
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'handlers': {
-        'console': {
-            'class': 'logging.StreamHandler',
-        },
-    },
-    'loggers': {
-        'django': {
-            'handlers': ['console'],
-            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
-        },
-    },
-}
+del DATABASES['default']['OPTIONS']['sslmode']
