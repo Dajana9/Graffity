@@ -15,6 +15,7 @@ import dj_database_url
 import dotenv
 import sys
 import urllib.parse as urlparse
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -81,19 +82,20 @@ WSGI_APPLICATION = 'graffity.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
-DATABASES = {}
-DATABASES['default'] = dj_database_url.config(
-    default=os.getenv('DATABASE_URL'))
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
+# DATABASES = {}
+# DATABASES['default'] = dj_database_url.config(
+#     default=os.getenv('DATABASE_URL'))
+django_heroku.settings(locals())
 
-
-# Password validation
-# https://docs.djangoproject.com/en/2.2/ref/settings/#auth-password-validators
+# DATABASES = {'default': dj_database_url.config()}
+# DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
+DATABASES['default'].update(dj_database_url.config())
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -162,3 +164,19 @@ CSRF_COOKIE_NAME = "csrftoken"
 # django_heroku.settings(locals())
 # # This is new
 # del DATABASES['default']['OPTIONS']['sslmode']
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
