@@ -91,11 +91,18 @@ DATABASES = {
 # DATABASES = {}
 # DATABASES['default'] = dj_database_url.config(
 #     default=os.getenv('DATABASE_URL'))
+# # This is new:
+dotenv_file = os.path.join(BASE_DIR, ".env")
+if os.path.isfile(dotenv_file):
+    dotenv.load_dotenv(dotenv_file)
+
+
 django_heroku.settings(locals())
+del DATABASES['default']['OPTIONS']['sslmode']
+DATABASES['default'].update(dj_database_url.config())
 
 # DATABASES = {'default': dj_database_url.config()}
 # DATABASES['default']['ENGINE'] = 'django.db.backends.postgresql_psycopg2'
-DATABASES['default'].update(dj_database_url.config())
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -134,7 +141,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'build/static'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
@@ -150,17 +157,12 @@ REST_FRAMEWORK = {
 
 CORS_ORIGIN_WHITELIST = (
     'localhost:3000',
+    '127.0.0.1:8000/media',
 )
 
 CSRF_COOKIE_NAME = "csrftoken"
 
 
-# # This is new:
-dotenv_file = os.path.join(BASE_DIR, ".env")
-if os.path.isfile(dotenv_file):
-    dotenv.load_dotenv(dotenv_file)
-
-# This should already be in your settings.py
+# his should already be in your settings.py
 # django_heroku.settings(locals())
 # # This is new
-del DATABASES['default']['OPTIONS']['sslmode']
