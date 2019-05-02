@@ -27,7 +27,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'zcsakghzy(*6wsxyh)w$5h9sy=dlhk!1s0vkt73xg22h%wiay@'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['graffity123.herokuapp.com', '127.0.0.1']
 
@@ -87,9 +87,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-# DATABASES = {}
-# DATABASES['default'] = dj_database_url.config(
-#     default=os.getenv('DATABASE_URL'))
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(
+    default=os.getenv('DATABASE_URL'))
 
 
 # Password validation
