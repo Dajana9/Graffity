@@ -34,9 +34,9 @@ const imageStyle = css`
 
 export class Gallery extends React.Component {
     state = {
-        articles: '',
+        articles: [],
         showModal: false,
-        article: ''
+        article: {}
     };
 
     componentDidMount = async () => {
@@ -63,7 +63,7 @@ export class Gallery extends React.Component {
         for (const article of articles) {
             items.push(
                 <div className={listStyle} key={article.id}>
-                    {/* <div className={flexGrowStyle}>
+                    {/* <div className={flexGrowStyle}>  
                         <h3>{article.title}</h3>
                         <p>{article.description}</p>
                     </div> */}

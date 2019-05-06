@@ -12,10 +12,14 @@ from .views import (
 )
 
 urlpatterns = [
-    path('gallery/', ArticleListView.as_view()),
-    path('workshop/', WorkshopArticleListView.as_view()),
-    path('webshop/', WebshopArticleListView.as_view()),
-    path('game/', GameArticleListView.as_view()),
+    # path('gallery/', ArticleListView.as_view()),
+    # path('workshop/', WorkshopArticleListView.as_view()),
+    # path('webshop/', WebshopArticleListView.as_view()),
+    # path('game/', GameArticleListView.as_view()),
+    path('gallery', ArticleListView.as_view()),
+    path('workshop', WorkshopArticleListView.as_view()),
+    path('webshop', WebshopArticleListView.as_view()),
+    path('game', GameArticleListView.as_view()),
 
     # path('create/', ArticleCreateView.as_view()),
     # path('<pk>', ArticleDetailView.as_view()),

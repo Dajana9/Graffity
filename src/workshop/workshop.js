@@ -83,7 +83,7 @@ export class Workshop extends React.Component {
 
     componentDidMount = async () => {
         console.log('U workshopu san');
-        axios.get('http://127.0.0.1:8000/api/workshop/').then(res => {
+        axios.get('/api/workshop').then(res => {
             const data = res.data;
             this.setState({articles: data});
             console.log(data);

@@ -50,7 +50,7 @@ export class Webshop extends React.Component {
     };
 
     componentDidMount = async () => {
-        axios.get('http://127.0.0.1:8000/api/webshop').then(res => {
+        axios.get('/api/webshop').then(res => {
             const data = res.data;
             this.setState({articles: data});
         });
