@@ -19,6 +19,7 @@ const imageStyle = css`
 const sliderStyle = css`
     margin: 10px 40px 30px 40px;
     height: 250px;
+    max-width: 800px;
     width: calc(100vw - 300px);
 
     & .slick-slider slick-initialized {
@@ -37,6 +38,7 @@ const sliderStyle = css`
             height: 250px;
             & .slick-slide {
                 width: 260px !important;
+                border: solid 1px #ccc;
             }
         }
     }
@@ -50,6 +52,7 @@ const sliderStyle = css`
 
 const descriptionStyle = css`
     margin: 10px;
+    max-width: 1000px;
 `;
 
 const videoStyle = css`

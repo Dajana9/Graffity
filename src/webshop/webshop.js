@@ -34,7 +34,7 @@ const flexGrowStyle = css`
 `;
 
 const imageStyle = css`
-    width: 250px;
+    width: 250px !important;
     height: inherit;
     object-fit: scale-down;
     display: flex;

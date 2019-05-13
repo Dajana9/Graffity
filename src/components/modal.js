@@ -10,8 +10,7 @@ const customStyles = {
         bottom: 'auto',
         marginRight: '-20%',
         transform: 'translate(-50%, -50%)',
-        minWidth: '75%',
-        backgroundImage: 'src(../images/gray-paper.jpg)'
+        minWidth: '75%'
     }
 };
 
@@ -28,6 +27,9 @@ const imageStyle = css`
     height: calc(100vh - 250px);
     width: calc(100vh - 250px);
     object-fit: scale-down;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 `;
 
 const overlayStyle = css`
@@ -39,6 +41,17 @@ const overlayStyle = css`
     background-color: rgba(255, 255, 255, 0.75);
 `;
 
+const closeStyle = css`
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    font-weight: 700;
+    font-size: 20px;
+    color: #ccc;
+    &:hover {
+        color: black;
+    }
+`;
 export class BaseModal extends React.Component {
     state = {
         modalIsOpen: this.props.isOpen
@@ -62,7 +75,9 @@ export class BaseModal extends React.Component {
                     {article.title}
                 </h2>
                 <p>{article.description}</p>
-                <button onClick={this.props.closeModal}>close</button>
+                <closebutton className={closeStyle} onClick={this.props.closeModal}>
+                    X
+                </closebutton>
             </ReactModal>
         );
     }
